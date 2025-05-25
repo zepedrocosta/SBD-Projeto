@@ -10,9 +10,9 @@
 \section{Overview of HammerDB}
 \label{sec:hammerdb}
 
-HammerDB is a free, open-source tool for benchmarking the performance of relational databases \cite{enwiki:1275860580}. 
+HammerDB is a free, open-source tool for benchmarking the performance of relational databases \cite{enwiki:1275860580}.
 
-It supports popular databases like Oracle, SQL Server, PostgreSQL, MySQL, and more. HammerDB uses industry-standard workloads such as TPROC-C and TPROC-H to simulate real-world database activity. 
+It supports popular databases like Oracle, SQL Server, PostgreSQL, MySQL, and more. HammerDB uses industry-standard workloads such as TPROC-C and TPROC-H to simulate real-world database activity.
 
 It offers both a graphical interface and command-line options, making it suitable for developers, DBAs, and system administrators to test, compare, and tune database performance.
 
@@ -20,6 +20,11 @@ It offers both a graphical interface and command-line options, making it suitabl
 \label{sec:tproc-c}
 
 TPROC-C is a benchmark designed to evaluate the performance of database management systems (DBMS) using a transactional workload. It simulates a typical online transaction processing (OLTP) environment, focusing on operations like inserts, updates, and deletes across multiple tables.
+
+\subsection{TPROC-C vs TPROC-H}
+\label{sec:tproc-c-vs-tproc-h}
+
+TPROC-H is a benchmark designed for data warehousing and analytical workloads, while TPROC-C is focused on transactional processing. TPROC-H emphasizes complex queries and large data sets, whereas TPROC-C simulates real-time transactions with a focus on insert, update, and delete operations.
 
 \section{Problem \& DBMS Summary}
 \label{sec:problem}
@@ -29,6 +34,42 @@ TPROC-C is a benchmark designed to evaluate the performance of database manageme
 
 \section{Methodology}
 \label{sec:methodology}
+
+\pagebreak
+
+\subsection{Hardware and Software Setup}
+\label{sec:hardware-software-setup}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        \textbf{PC}      & \textbf{1}      & \textbf{2}       & \textbf{3}      \\
+        \hline
+        \textbf{OS}      & Windows 11      & Windows 11       & Linux (Unraid)  \\
+        \hline
+        \textbf{CPU}     & Intel i7-13700H & AMD Ryzen 5 3600 & Intel i3-10100F \\
+        \hline
+        \textbf{Cores}   & 14 (6P 8E)      & 6                & 4               \\
+        \hline
+        \textbf{Threads} & 20              & 12               & 8               \\
+        \hline
+        \textbf{RAM}     & 16GB            & 16GB             & 32GB            \\
+        \hline
+        \textbf{Disk}    & SSD M.2 NVMe    & SSD M.2 NVMe     & SSD M.2 NVMe    \\
+        \hline
+        \textbf{Read}    & 3500 MB/s       & 2500 MB/s        & 3500 MB/s       \\
+        \hline
+        \textbf{Write}   & 2700 MB/s       & 2100 MB/s        & 3300 MB/s       \\
+        \hline
+    \end{tabular}
+    \caption{Hardware used in the benchmarks}
+    \label{tab:hardware-setup}
+\end{table}
+
+On the first PC, the HammerDB server was running on a Ubuntu 22.04 virtual machine with 4 cores and 12GB of RAM. All databases were installed on docker containers on the host machine.
+
+On the third PC, all databases including the HammerDB server were running on docker containers on the host machine.
 
 \section{Results}
 \label{sec:results}
