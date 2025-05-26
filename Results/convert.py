@@ -18,10 +18,15 @@ def convert_json_to_csv(json_file, csv_file):
 
 
 def convert_all():
-    user_dir = ["Rodrigo", "Silva"]
+    user_dir = ["Rodrigo", "Silva", "Zé"]
     for user in user_dir:
         input_dir = f"Results/{user}/json"
         output_dir = f"Results/{user}/csv"
+
+        if not os.path.exists(input_dir):
+            print(f"Input directory does not exist. Skipping {user}.")
+            print()
+            continue
 
         if not os.path.exists(output_dir):
             os.makedirs(output_dir)
