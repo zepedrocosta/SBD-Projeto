@@ -1,4 +1,5 @@
 version: "3.9"
+
 services:
   mysql:
     image: mysql:5.7
@@ -10,6 +11,10 @@ services:
       - "3307:3306"
     volumes:
       - mysql-volume:/var/lib/mysql
+    # configs:
+    #   - source: mysql_config
+    #     target: /mnt/user/ZeData/UNI Mestrado/SBD/Projeto/SBD-Projeto/Configs/2nd test/mysql.cnf
+    #     # target: /mnt/user/ZeData/UNI Mestrado/SBD/Projeto/SBD-Projeto/Configs/3rd test/mysql.cnf
     networks:
       - sbd_network
 
@@ -25,6 +30,10 @@ services:
       - POSTGRES_PASSWORD=1234
       - POSTGRES_USER=userSBD
       - POSTGRES_DB=sbd
+    # configs:
+    #   - source: postgres_config
+    #     target: /mnt/user/ZeData/UNI Mestrado/SBD/Projeto/SBD-Projeto/Configs/2nd test/postgresql.conf
+    #     # target: /mnt/user/ZeData/UNI Mestrado/SBD/Projeto/SBD-Projeto/Configs/3rd test/postgresql.conf
     networks:
       - sbd_network
 
@@ -36,9 +45,12 @@ services:
       MYSQL_DATABASE: sbdDatabase
     ports:
       - "3308:3306"
+    # configs:
+    #   - source: mariadb_config
+    #     target: /mnt/user/ZeData/UNI Mestrado/SBD/Projeto/SBD-Projeto/Configs/2nd test/my.cnf
+    #     # target: /mnt/user/ZeData/UNI Mestrado/SBD/Projeto/SBD-Projeto/Configs/3rd test/my.cnf
     networks:
       - sbd_network
-
   hammer-gui:
     image: tpcorg/hammerdb:latest-cloudtk
     ports:
