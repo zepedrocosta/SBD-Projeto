@@ -1,4 +1,5 @@
 version: "3.9"
+
 services:
   mysql:
     image: mysql:5.7
@@ -10,6 +11,8 @@ services:
       - "3307:3306"
     volumes:
       - mysql-volume:/var/lib/mysql
+      - "./Configs/2nd test/mysql.cnf:/etc/mysql/conf.d/mysql.cnf"
+      # - "./Configs/3rd test/mysql.cnf:/etc/mysql/conf.d/mysql.cnf"
     networks:
       - sbd_network
 
@@ -21,6 +24,8 @@ services:
       - "5432:5432"
     volumes:
       - postgres-volume:/var/lib/postgresql/data
+      - "./Configs/2nd test/postgresql.conf:/etc/postgresql/postgresql.conf"
+      # - "./Configs/3rd test/postgresql.conf:/etc/postgresql/postgresql.conf"
     environment:
       - POSTGRES_PASSWORD=1234
       - POSTGRES_USER=userSBD
@@ -30,21 +35,26 @@ services:
 
   mariadb:
     image: mariadb:latest
+    restart: always
     container_name: Mariadb
     environment:
       MYSQL_ROOT_PASSWORD: 1234
       MYSQL_DATABASE: sbdDatabase
     ports:
       - "3308:3306"
+    volumes:
+      - "./Configs/2nd test/my.cnf:/etc/mysql/my.cnf"
+      # - "./Configs/3rd test/my.cnf:/etc/mysql/my.cnf"
     networks:
       - sbd_network
 
   hammer-gui:
     image: tpcorg/hammerdb:latest-cloudtk
+    restart: always
     ports:
-      - 8081:8081
-      - 8082:8082
-      - 8080:8080
+      - "8081:8081"
+      - "8082:8082"
+      - "8080:8080"
     networks:
       - sbd_network
     depends_on:
