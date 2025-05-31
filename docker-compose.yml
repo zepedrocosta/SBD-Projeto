@@ -57,7 +57,7 @@ services:
       - postgres
       - mariadb
     volumes:
-      - ./Scripts:/tcl-scripts
+      - ./Scripts:/home/HammerDB-4.10/scripts/tcl-scripts
       - ./stats-logs:/exp-logs
 
 volumes:
