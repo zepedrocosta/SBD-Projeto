@@ -11,13 +11,14 @@ services:
       - "3307:3306"
     volumes:
       - mysql-volume:/var/lib/mysql
-      - ${PWD}/mysql.cnf:/etc/mysql/conf.d/mysql.cnf
+      - "./Configs/2nd test/mysql.cnf:/etc/mysql/conf.d/mysql.cnf"
+      # - "./Configs/3rd test/mysql.cnf:/etc/mysql/conf.d/mysql.cnf"
     networks:
       - sbd_network
 
   postgres:
     image: postgres
-    container_name: postgres-SBD
+    container_name: postgres-sbd
     hostname: postgres-database
     command: postgres -c config_file=/etc/postgresql/postgresql.conf
     networks:
@@ -26,7 +27,7 @@ services:
       POSTGRES_PASSWORD: "1234"
     volumes:
       - postgres-volume:/var/lib/postgresql/data
-      - ${PWD}/postgresql.conf:/etc/postgresql/postgresql.conf:ro
+      - ./Configs/Hard_Test/postgresql.conf:/etc/postgresql/postgresql.conf:ro
 
   mariadb:
     image: mariadb:latest
