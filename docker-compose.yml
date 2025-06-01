@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   mysql:
-    image: mysql:8.4
+    build: .
     restart: always
     container_name: MySQL_SBD
     environment:
@@ -11,7 +11,6 @@ services:
       - "3307:3306"
     volumes:
       - mysql-volume:/var/lib/mysql
-      - ./Configs/Hard_Test/mysql.cnf:/etc/mysql/conf.d/mysql.cnf:ro
     networks:
       - sbd_network
 
