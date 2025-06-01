@@ -2,7 +2,9 @@ version: "3.9"
 
 services:
   mysql:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfiles/MySQL/Dockerfile
     restart: always
     container_name: MySQL_SBD
     environment:
@@ -16,7 +18,7 @@ services:
 
   postgres:
     image: postgres
-    container_name: postgres-sbd
+    container_name: Postgres_SBD
     hostname: postgres-database
     command: postgres -c config_file=/etc/postgresql/postgresql.conf
     networks:
@@ -28,17 +30,18 @@ services:
       - ./Configs/Hard_Test/postgresql.conf:/etc/postgresql/postgresql.conf:ro
 
   mariadb:
-    image: mariadb:latest
+    build:
+      context: .
+      dockerfile: Dockerfiles/MariaDB/Dockerfile
     restart: always
-    container_name: Mariadb
+    container_name: MariaDB_SBD
     environment:
       MYSQL_ROOT_PASSWORD: 1234
       MYSQL_DATABASE: sbdDatabase
     ports:
       - "3308:3306"
     volumes:
-      - "./Configs/2nd test/my.cnf:/etc/mysql/my.cnf"
-      # - "./Configs/3rd test/my.cnf:/etc/mysql/my.cnf"
+      - mariadb-volume:/var/lib/mysql:rw
     networks:
       - sbd_network
 
@@ -63,6 +66,8 @@ volumes:
   mysql-volume:
     driver: local
   postgres-volume:
+    driver: local
+  mariadb-volume:
     driver: local
 
 networks:
