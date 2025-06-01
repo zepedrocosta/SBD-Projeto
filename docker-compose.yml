@@ -19,15 +19,16 @@ services:
   postgres:
     image: postgres
     container_name: Postgres_SBD
-    hostname: postgres-database
     command: postgres -c config_file=/etc/postgresql/postgresql.conf
-    networks:
-      - sbd_network
     environment:
       POSTGRES_PASSWORD: "1234"
+    ports:
+      - "5432:5432"
     volumes:
       - postgres-volume:/var/lib/postgresql/data
       - ./Configs/Hard_Test/postgresql.conf:/etc/postgresql/postgresql.conf:ro
+    networks:
+      - sbd_network
 
   mariadb:
     build:
