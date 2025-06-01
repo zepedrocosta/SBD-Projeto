@@ -5,9 +5,9 @@ dbset db pg
 dbset bm TPC-C
 
 # DB configs
-diset connection pg_host posgres-database
+diset connection pg_host 172.20.0.2
 diset connection pg_port 5432
-diset connection pg_sslmode false
+diset connection pg_sslmode prefer
 diset tpcc pg_superuser postgres
 diset tpcc pg_superuserpass 1234
 diset tpcc pg_defaultdb postgres
@@ -47,6 +47,7 @@ vudestroy
 
 # Build and load
 buildschema
+vudestroy
 loadscript
 
 # Vuser options
@@ -62,7 +63,7 @@ vuset timestamps 1
 # Run
 tcstart
 
-foreach z {4 8 12 16 32} {
+foreach z {4} {
     puts "Starting $z VU TEST"
 
     puts "Setting $z VU"
