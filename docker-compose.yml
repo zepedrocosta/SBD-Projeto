@@ -14,7 +14,8 @@ services:
     volumes:
       - mysql-volume:/var/lib/mysql
     networks:
-      - sbd_network
+      sbd_network:
+        ipv4_address: 172.20.0.3
 
   postgres:
     image: postgres
@@ -28,7 +29,8 @@ services:
       - postgres-volume:/var/lib/postgresql/data
       - ./Configs/Hard_Test/postgresql.conf:/etc/postgresql/postgresql.conf:ro
     networks:
-      - sbd_network
+      sbd_network:
+        ipv4_address: 172.20.0.2
 
   mariadb:
     build:
@@ -44,7 +46,8 @@ services:
     volumes:
       - mariadb-volume:/var/lib/mysql:rw
     networks:
-      - sbd_network
+      sbd_network:
+        ipv4_address: 172.20.0.4
 
   hammer-gui:
     image: tpcorg/hammerdb:latest-cloudtk
@@ -53,8 +56,6 @@ services:
       - "8081:8081"
       - "8082:8082"
       - "8080:8080"
-    networks:
-      - sbd_network
     depends_on:
       - mysql
       - postgres
@@ -62,6 +63,9 @@ services:
     volumes:
       - ./Scripts:/home/HammerDB-4.10/scripts/tcl-scripts
       - ./stats-logs:/exp-logs
+    networks:
+      sbd_network:
+        ipv4_address: 172.20.0.5
 
 volumes:
   mysql-volume:
@@ -74,3 +78,6 @@ volumes:
 networks:
   sbd_network:
     driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16

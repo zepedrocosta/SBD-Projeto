@@ -5,8 +5,8 @@ dbset db mysql
 dbset bm TPC-C
 
 # DB configs
-diset connection mysql_host mysql-database
-diset connection mysql_port 3306
+diset connection mysql_host 172.20.0.3
+diset connection mysql_port 3307
 diset connection mysql_socket "/tmp/mysql.sock"
 diset tpcc mysql_user tpcc
 diset tpcc mysql_pass tpcc
