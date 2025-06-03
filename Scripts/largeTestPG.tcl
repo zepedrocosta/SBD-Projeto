@@ -41,35 +41,33 @@ tcset logtotemp 1
 tcset unique 1
 tcset timestamps 1
 
-# Delete possible previous data
-deleteschema
-vudestroy
-
-# Build and load
-buildschema
-vudestroy
-loadscript
-
-# Vuser options
-vuset delay 500
-vuset repeat 500
-vuset iterations 1
-vuset showoutput 0
-vuset logtotemp 1
-vuset unique 1
-vuset nobuff 0
-vuset timestamps 1
-
 # Run
-tcstart
 
-foreach z {4} {
+foreach z {2 4 8 12} {
+    set w [expr {$z * 5}]
+
+    # Delete possible previous data
+    deleteschema
+    vudestroy
+
+    # Build and load
+    buildschema
+    vudestroy
+    loadscript
+
+    # Vuser options
+    vuset delay 500
+    vuset repeat 500
+    vuset iterations 1
+    vuset showoutput 0
+    vuset logtotemp 1
+    vuset unique 1
+    vuset nobuff 0
+    vuset timestamps 1
+
     puts "Starting $z VU TEST"
-
-    puts "Setting $z VU"
+    tcstart
     vuset vu $z
-
-    puts "Running $z VU"
     vucreate
     vurun
 
@@ -78,6 +76,5 @@ foreach z {4} {
 
     puts "Destroying VU"
     vudestroy
+    tcstop
 }
-
-tcstop
