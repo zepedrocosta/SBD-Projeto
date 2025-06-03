@@ -11,4 +11,4 @@ STATS_LOG=stats.log
 TCL_SCRIPT= scripts/tcl-scripts/largeTestMySQL.tcl
 
 # Run the HammerDB benchmark from the HammerDB container
-docker exec -it $HAMMER_CONTAINER hammerdbcli auto $TCL_SCRIPT
+docker exec -it $HAMMER_CONTAINER /home/HammerDB-4.10/hammerdbcli auto $TCL_SCRIPT

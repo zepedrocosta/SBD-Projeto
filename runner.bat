@@ -5,10 +5,11 @@ setlocal
 set HAMMER_CONTAINER=HammerDB_SBD
 
 set TCL_SCRIPT=scripts/tcl-scripts/largeTestPG.tcl
+set DATABASE=postgres
 
 :: Start the stats logging in a new window using the temp file
 @REM start "PCStats" cmd /c PCStats.bat "%TCL_SCRIPT%"
-start "PCStats" cmd /c PCStats.bat
+start "PCStats" cmd /c PCStats.bat "%DATABASE%"
 
 timeout /t 5 >nul
 

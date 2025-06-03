@@ -1,6 +1,8 @@
 @echo off
 setlocal enabledelayedexpansion
 
+set DB=%1
+
 :: Format date and time safely for filename
 for /f "tokens=1-3 delims=/" %%a in ("%date%") do (
     set mm=%%a
@@ -12,7 +14,7 @@ for /f "tokens=1-3 delims=:." %%a in ("%time%") do (
     set min=%%b
     set ss=%%c
 )
-set "logfile=usage_log_%yyyy%%mm%%dd%_%hh%%min%.csv"
+set "logfile=sys_usage_%mm%_%dd%_%hh%_%min%_%DB%.csv"
 
 :: Set interval (in seconds)
 set interval=30
