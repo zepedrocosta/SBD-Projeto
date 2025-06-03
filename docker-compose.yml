@@ -51,6 +51,7 @@ services:
 
   hammer-gui:
     image: tpcorg/hammerdb:latest-cloudtk
+    container_name: HammerDB_SBD
     restart: always
     ports:
       - "8081:8081"
