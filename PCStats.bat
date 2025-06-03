@@ -38,7 +38,7 @@ for /f "skip=1" %%x in ('wmic cpu get loadpercentage') do (
 :gotCPU
 
 :: Get RAM usage (in MB)
-for /f "skip=1 tokens=1,2" %%a in ('wmic OS get FreePhysicalMemory^,TotalVisibleMemorySize /format:csv') do (
+for /f "skip=1 tokens=2,3 delims=," %%a in ('wmic OS get FreePhysicalMemory^,TotalVisibleMemorySize /format:csv') do (
     set "free=%%a"
     set "total=%%b"
 )
