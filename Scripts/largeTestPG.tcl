@@ -17,8 +17,8 @@ diset tpcc pg_dbase tpcc
 diset tpcc pg_tspace pg_default
 
 # Default for WH and VU
-diset tpcc pg_count_ware 80
-diset tpcc pg_num_vu 4
+diset tpcc pg_count_ware 50
+diset tpcc pg_num_vu 10
 
 # Driver script options
 diset tpcc pg_timeprofile true
@@ -30,7 +30,7 @@ diset tpcc pg_total_iterations 1000000
 
 # Timed duration
 diset tpcc pg_rampup 2
-diset tpcc pg_duration 13
+diset tpcc pg_duration 8
 
 # Distribute load
 diset tpcc pg_allwarehouse false
@@ -45,6 +45,7 @@ tcset timestamps 1
 
 foreach z {2 4 8 12} {
     set w [expr {$z * 5}]
+    puts "Building Schema for $z TEST"
 
     # Delete possible previous data
     deleteschema
