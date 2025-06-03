@@ -5,7 +5,7 @@ dbset db pg
 dbset bm TPC-C
 
 # DB configs
-diset connection pg_host 172.20.0.2
+diset connection pg_host 172.22.0.2
 diset connection pg_port 5432
 diset connection pg_sslmode prefer
 diset tpcc pg_superuser postgres

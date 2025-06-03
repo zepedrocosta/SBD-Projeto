@@ -5,7 +5,7 @@ dbset db maria
 dbset bm TPC-C
 
 # DB configs
-diset connection maria_host 172.20.0.4
+diset connection maria_host 172.22.0.4
 diset connection maria_port 3308
 diset connection maria_socket "/tmp/mariadb.sock"
 diset tpcc maria_user tpcc
