@@ -1,11 +1,14 @@
 @echo off
 setlocal
 
-:: Set container names
-set HAMMER_CONTAINER=HammerDB_SBD
-
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: MUDAR ISTO!!!!
 set TCL_SCRIPT=scripts/tcl-scripts/largeTestPG.tcl
 set DATABASE=postgres
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: Set container names
+set HAMMER_CONTAINER=HammerDB_SBD
 
 :: Start the stats logging in a new window using the temp file
 @REM start "PCStats" cmd /c PCStats.bat "%TCL_SCRIPT%"
