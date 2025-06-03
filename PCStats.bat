@@ -17,7 +17,7 @@ for /f "tokens=1-3 delims=:." %%a in ("%time%") do (
 set "logfile=sys_usage_%mm%_%dd%_%hh%_%min%_%DB%.csv"
 
 :: Set interval (in seconds)
-set interval=30
+set interval=10
 
 :: Write CSV header
 echo Timestamp,CPU_Usage_Percent,RAM_Used_MB > "%logfile%"
