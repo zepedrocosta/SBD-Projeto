@@ -98,8 +98,4 @@ kill "$PCSTATS_PID"
 
 echo "Benchmark and monitoring complete for MariaDB."
 
-echo "Stopping and removing existing containers and volumes..."
-
-docker compose down -v
-
 echo "Benchmark and monitoring complete."

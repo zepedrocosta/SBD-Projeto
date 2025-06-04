@@ -87,9 +87,5 @@ for /f "tokens=2 delims=," %%i in ('tasklist /v /fo csv ^| findstr /i /c:"PCStat
 
 echo Benchmark and monitoring complete for MariaDB.
 
-echo Stopping and removing existing containers and volumes...
-
-docker compose down -v
-
 echo Benchmark and monitoring complete.
 endlocal
