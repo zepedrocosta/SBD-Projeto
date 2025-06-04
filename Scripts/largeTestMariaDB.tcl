@@ -6,8 +6,8 @@ dbset bm TPC-C
 
 # DB configs
 diset connection maria_host 172.22.0.4
-diset connection maria_port 3308
-diset connection maria_socket "/tmp/mariadb.sock"
+diset connection maria_port 3306
+diset connection mysql_socket "/var/run/mysqld/mysqld.sock"
 diset tpcc maria_user tpcc
 diset tpcc maria_pass tpcc
 diset tpcc maria_dbase tpcc
