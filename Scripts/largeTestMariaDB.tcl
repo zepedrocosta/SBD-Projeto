@@ -41,6 +41,7 @@ tcset timestamps 1
 
 foreach z {2 4 8 12} {
     set w [expr {$z * 5}]
+    diset tpcc maria_count_ware $w
     puts "Building Schema for $z TEST"
 
     # Delete possible previous data
