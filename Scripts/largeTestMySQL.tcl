@@ -8,8 +8,8 @@ dbset bm TPC-C
 diset connection mysql_host 172.22.0.3
 diset connection mysql_port 3306
 diset connection mysql_socket "/var/run/mysqld/mysqld.sock"
-diset tpcc mysql_user tpcc
-diset tpcc mysql_pass tpcc
+diset tpcc mysql_user root
+diset tpcc mysql_pass 1234
 diset tpcc mysql_dbase tpcc
 
 # Default for WH and VU

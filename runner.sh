@@ -12,9 +12,9 @@ echo "Starting HammerDB benchmark runner..."
 # Compose down to ensure a clean start
 
 # TCL script path (on host or mounted in container)
-echo "Stopping and removing existing containers and volumes..."
+echo "Stopping and removing existing containers, images and volumes..."
 
-docker compose down -v
+docker compose down --rmi all -v
 
 sleep 5
 
