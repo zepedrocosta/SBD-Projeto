@@ -30,22 +30,22 @@ echo Starting HammerDB benchmark...
 :: POSTGRESQL
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-@REM echo Starting up PostgreSQL benchmark...
+echo Starting up PostgreSQL benchmark...
 
-@REM :: Start the stats logging in a new window using the temp file
-@REM start "PCStats" cmd /c PCStats.bat "postgres"
+:: Start the stats logging in a new window using the temp file
+start "PCStats" cmd /c PCStats.bat "postgres"
 
-@REM timeout /t 5 >nul
+timeout /t 5 >nul
 
-@REM docker exec -i %HAMMER_CONTAINER% /home/HammerDB-4.10/hammerdbcli auto scripts/tcl-scripts/largeTestPG.tcl
+docker exec -i %HAMMER_CONTAINER% /home/HammerDB-4.10/hammerdbcli auto scripts/tcl-scripts/largeTestPG.tcl
 
-@REM for /f "tokens=2 delims=," %%i in ('tasklist /v /fo csv ^| findstr /i /c:"PCStats"') do (
-@REM     taskkill /PID %%~i /F >nul 2>&1
-@REM )
+for /f "tokens=2 delims=," %%i in ('tasklist /v /fo csv ^| findstr /i /c:"PCStats"') do (
+    taskkill /PID %%~i /F >nul 2>&1
+)
 
-@REM echo Benchmark and monitoring complete for PostgreSQL.
+echo Benchmark and monitoring complete for PostgreSQL.
 
-@REM timeout /t 30
+timeout /t 
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: MYSQL
