@@ -87,3 +87,6 @@ thread_stack                    = 256K
 # MONITORING
 #------------------------------------------------------------------------------
 innodb_monitor_enable           = '%'
+
+require_secure_transport = OFF
+caching_sha2_password_auto_generate_rsa_keys = ON
