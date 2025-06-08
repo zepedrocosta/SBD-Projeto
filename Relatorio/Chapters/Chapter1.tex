@@ -54,26 +54,70 @@ TPROC-H is a benchmark designed for data warehousing and analytical workloads, w
 \label{sec:problem}
 Modern applications progressively depend on robust, scalable database systems to effectively manage workloads in a transactional manner. Choosing the right Database Management System (DBMS) is critical to achieve the best possible performance, especially where concurrency is high and the workload is varied. With so many DBMSs to select from, with their own strengths, configurations, and community support, getting the right one can be problematic.
 
-The main objective of this study is to provide a clear comparison of how three of the most popular open-source DBMSs—PostgreSQL, MySQL, and MariaDB—perform under TPROC-C workloads. This is a close approximation of OLTP environments and thus is suitable to use in evaluating systems for high-throughput transaction processing.
+The main objective of this study is to provide a clear comparison of how three of the most popular open-source DBMSs like,PostgreSQL, MySQL, and MariaDB perform under TPROC-C workloads. This is a close approximation of OLTP environments and thus is suitable to use in evaluating systems for high-throughput transaction processing.
 
 A brief overview of the DBMSs under test is provided below:
 
 \begin{itemize}
+    \setlength\itemsep{0.1em}
     \item \textbf{PostgreSQL}: It is renowned for support of sophisticated query capabilities, extensibility, and strict support for data integrity features.
     \item \textbf{MySQL}: Extensively used in web development, valued as being easy to use and swift, with excellent ecosystem and support.
     \item \textbf{MariaDB}: A fork of MySQL with an emphasis on improved speed, open development, and additional storage engines.
 \end{itemize}
 
-Each DBMS was installed with identical hardware and software configurations to provide a level playing field for the tests. Experiments were designed to highlight differences in how each system handles transaction loads, concurrency, and configuration parameters. Through comparison of performance in a systematic manner across controlled tests, this study aims to guide database selection on the grounds of empirical evidence and not assumptions or anecdotal experience.
+Each DBMS was installed with identical hardware and software configurations to provide a level playing field for the tests. Experiments were designed to highlight differences in how each system handles transaction loads, concurrency, and configuration parameters. Through comparison of performance in a systematic manner across controlled tests, this study aims to guide database selection on the grounds of empirical evidence and not assumptions.
 
 
 \section{Benchmark Description}
 \label{sec:benchmark}
 
+The benchmark used in the research is the TPROC-C workload using HammerDB. TPROC-C is designed to simulate an OLTP environment in the average case and is composed of transactions containing new orders, orders to make payment, checking orders status, delivering orders, and updating stock status. The aforementioned operations can be likened to real-world application environments.
+
+\subsection{Benchmark Goals}
+
+The main objectives of the benchmark are to:
+
+\begin{itemize}
+    \setlength\itemsep{0.1em}
+    \item Compare the throughputs of the DBMSs at different levels of concurrency in terms of Transactions Per Minute, or TPM.
+    \item Monitor the scalability of the systems as virtual users and additional warehouses get created.
+    \item Measure consistency across repeated experiments as well as with different setups.
+\end{itemize}
+
+\subsection{Test Parameters}
+
+To ensure consistency and fairness, the same configuration template was used for all tests, with the sole variations being the number of virtual users, warehouses, and the specific DBMS being tested. The significant parameters were:
+
+\begin{itemize}
+    \setlength\itemsep{0.1em}
+    \item \textbf{Virtual Users (VU)}: Simulated clients making postings simultaneously. Applying the values 2, 4, 8, and 12 to perform the scaling test.
+    \item \textbf{Warehouses}: A TPROC-C scale unit. Five times the number of virtual users.
+    \item \textbf{Test Duration}: Each test was executed in medium one hour.
+    \item \textbf{Ramp-Up and Cool-Down Time}: Confirmed with HammerDB setup to allow systems to reach steady state before measurement.
+\end{itemize}
+
+\subsection{Execution Environment}
+
+All the testing was automated with custom scripts offering the same setup routines and execution across the systems. The environment included combinations of Windows and Linux systems, based on the setup. HammerDB was run in some cases in Docker containers to offer isolation to the test environment and ensure repeatability.
+
+\subsection{Metrics Collected}
+
+A critical measurement during the benchmarking was the Transaction Per Minute (TPM), as posted by HammerDB. The measurement is indicative of the system capability to process new orders and follow-up transactions in one minute. Secondary measures included CPU usage and memory use.
+
+\subsection{Limitations}
+
+Even though control over variables, consistency across runs, and bias to a variable as limited as possible was the focus of this testing, there are several limitations:
+
+\begin{itemize}
+    \setlength\itemsep{0.1em}
+    \item Variability in network latency, and relative performance of hardware and storage may be negligible in each of the testing environments.
+    \item Unless otherwise stated, default DBMS tuning parameters were used that are not reflective of, nor necessarily represent, the best performance that could be achieved for each database management system.
+    \item The intent and focus were on relative performance under a specified workload, not full optimization for each system.
+\end{itemize}
+
+
 \section{Methodology}
 \label{sec:methodology}
-
-\pagebreak
 
 \subsection{Hardware and Software Setup}
 \label{sec:hardware-software-setup}
@@ -82,36 +126,38 @@ Each DBMS was installed with identical hardware and software configurations to p
     \centering
     \begin{tabular}{|c|c|c|c|c|}
         \hline
-        \textbf{PC}        & \textbf{1}      & \textbf{2}       & \textbf{3}      & \textbf{4}    \\
+        \textbf{PC}        & \textbf{1}       & \textbf{2}      & \textbf{3}      & \textbf{4}    \\
         \hline
-        \textbf{OS}        & Windows 11      & Windows 11       & Linux (Unraid)  & MacOS Sequoia \\
+        \textbf{OS}        & Windows 11       & Windows 11      & Linux (Unraid)  & MacOS Sequoia \\
         \hline
-        \textbf{CPU}       & Intel i7-13700H & AMD Ryzen 5 3600 & Intel i3-10100F & Apple M1      \\
+        \textbf{CPU}       & AMD Ryzen 5 3600 & Intel i7-13700H & Intel i3-10100F & Apple M1      \\
         \hline
-        \textbf{Cores}     & 14 (6P 8E)      & 6                & 4               & 8             \\
+        \textbf{Cores}     & 6                & 14 (6P 8E)      & 4               & 8             \\
         \hline
-        \textbf{Threads}   & 20              & 12               & 8               & 8             \\
+        \textbf{Threads}   & 12               & 20              & 8               & 8             \\
         \hline
-        \textbf{RAM}       & 16GB            & 16GB             & 32GB            & 16GB          \\
+        \textbf{RAM}       & 16GB             & 16GB            & 32GB            & 16GB          \\
         \hline
-        \textbf{Disk}      & SSD M.2 NVMe    & SSD M.2 NVMe     & SSD M.2 NVMe    & SSD M.2 NVMe  \\
+        \textbf{Disk}      & SSD M.2 NVMe     & SSD M.2 NVMe    & SSD M.2 NVMe    & SSD M.2 NVMe  \\
         \hline
-        \textbf{Read}      & 3500 MB/s       & 2500 MB/s        & 3500 MB/s       & 3400 MB/s     \\
+        \textbf{Read}      & 2500 MB/s        & 3500 MB/s       & 3500 MB/s       & 3400 MB/s     \\
         \hline
-        \textbf{Write}     & 2700 MB/s       & 2100 MB/s        & 3300 MB/s       & 2800 MB/s     \\
+        \textbf{Write}     & 2100 MB/s        & 2700 MB/s       & 3300 MB/s       & 2800 MB/s     \\
         \hline
-        \textbf{Test type} & Docker          & Bare metal        & Docker          & Docker        \\
+        \textbf{Test type} & Bare metal       & Docker          & Docker          & Docker        \\
         \hline
     \end{tabular}
     \caption{Hardware used in the benchmarks}
-    \label{t,ab:hardware-setup}
+    \label{tab:hardware-setup}
 \end{table}
 
-In PCs \textbf{1}, \textbf{3}, and \textbf{4}, we used HammerDB and all the databases in docker containers to run the tests, which allows for easy setup and isolation of the testing environment.
+In PC \textbf{1}, we used everything installed on the host machine (Bare metal).
 
-We used docker compose for this setup, which allowed us to easily run the same tests on different machines with the same configuration.
+In PCs \textbf{2}, \textbf{3}, and \textbf{4}, we used HammerDB and all the databases in docker containers to run the tests, which allows for easy setup and isolation of the testing environment.
 
-In PC \textbf{2}, we used everything installed on the host machine (Bare metal).
+We used \hyperref[sec:docker-compose]{docker compose} for this setup, which allowed us to easily run the same tests on different machines with the same configuration.
+
+For \hyperref[sec:dockerfile-mysql]{MySQL} and \hyperref[sec:dockerfile-mariadb]{MariaDB}, we needed to create custom Dockerfiles to be able to use custom configuration files. This is due to the fact that these databases only accept read only configuration files when running in a container, which is not the case for PostgreSQL.
 
 \subsection{Database Setup}
 \label{sec:database-setup}

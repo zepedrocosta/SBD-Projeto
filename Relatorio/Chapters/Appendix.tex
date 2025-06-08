@@ -592,4 +592,303 @@ log_statement = 'none'
 log_min_duration_statement = 1000    # Log queries slower than 1s
 \end{lstlisting}
 
+\pagebreak
 
+\section{Runner Scripts}
+\label{sec:runner-scripts}
+
+\subsection{Batch Script}
+\label{sec:batch-script}
+
+\begin{lstlisting}[caption={Batch script to run the TCL scripts}, label={lst:batch-script}]
+@echo off
+setlocal
+
+:: Set container names
+set HAMMER_CONTAINER=HammerDB_SBD
+
+echo Starting HammerDB benchmark runner...
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: Setup containers
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: Compose down to ensure a clean start
+echo Stopping and removing existing containers, images and volumes...
+docker compose down --rmi all -v
+
+timeout /t 5
+
+:: Compose up to start the containers
+echo Starting containers...
+docker compose up -d
+
+timeout /t 10
+
+echo Containers are up and running!
+
+echo Starting HammerDB benchmark...
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: POSTGRESQL
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+echo Starting up PostgreSQL benchmark...
+
+:: Start the stats logging in a new window using the temp file
+start "PCStats" cmd /c PCStats.bat "postgres"
+
+timeout /t 5 >nul
+
+docker exec -i %HAMMER_CONTAINER% /home/HammerDB-4.10/hammerdbcli auto scripts/tcl-scripts/largeTestPG.tcl
+
+for /f "tokens=2 delims=," %%i in ('tasklist /v /fo csv ^| findstr /i /c:"PCStats"') do (
+    taskkill /PID %%~i /F >nul 2>&1
+)
+
+echo Benchmark and monitoring complete for PostgreSQL.
+
+timeout /t 
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: MYSQL
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+echo Starting up MySQL benchmark...
+
+:: Start the stats logging in a new window using the temp file
+start "PCStats" cmd /c PCStats.bat "mysql"
+
+timeout /t 5 >nul
+
+docker exec -i %HAMMER_CONTAINER% /home/HammerDB-4.10/hammerdbcli auto scripts/tcl-scripts/largeTestMySQL.tcl
+
+for /f "tokens=2 delims=," %%i in ('tasklist /v /fo csv ^| findstr /i /c:"PCStats"') do (
+    taskkill /PID %%~i /F >nul 2>&1
+)
+
+echo Benchmark and monitoring complete for MySQL.
+
+timeout /t 30
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: MARIADB
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+echo Starting up MariaDB benchmark...
+
+:: Start the stats logging in a new window using the temp file
+start "PCStats" cmd /c PCStats.bat "mariadb"
+
+timeout /t 5 >nul
+
+docker exec -i %HAMMER_CONTAINER% /home/HammerDB-4.10/hammerdbcli auto scripts/tcl-scripts/largeTestMariaDB.tcl
+
+for /f "tokens=2 delims=," %%i in ('tasklist /v /fo csv ^| findstr /i /c:"PCStats"') do (
+    taskkill /PID %%~i /F >nul 2>&1
+)
+
+echo Benchmark and monitoring complete for MariaDB.
+
+echo Benchmark and monitoring complete.
+endlocal
+\end{lstlisting}
+
+\subsubsection{PCStats Script}
+\label{sec:pcstats-script}
+
+\begin{lstlisting}[caption={PCStats script to monitor the system in Windows}, label={lst:pcstats-script}]
+@echo off
+setlocal enabledelayedexpansion
+
+set DB=%1
+
+:: Format date and time safely for filename
+for /f "tokens=1-3 delims=/" %%a in ("%date%") do (
+    set mm=%%a
+    set dd=%%b
+    set yyyy=%%c
+)
+for /f "tokens=1-3 delims=:." %%a in ("%time%") do (
+    set hh=%%a
+    set min=%%b
+    set ss=%%c
+)
+set "logfile=sys_usage_%mm%_%dd%_%hh%_%min%_%DB%.csv"
+
+:: Set interval (in seconds)
+set interval=10
+
+:: Write CSV header
+echo Timestamp,CPU_Usage_Percent,RAM_Used_MB > "%logfile%"
+
+:loop
+:: Get timestamp in ISO format using PowerShell
+for /f %%x in ('powershell -command "Get-Date -Format yyyy-MM-dd_HH:mm:ss"') do set timestamp=%%x
+
+echo Current timestamp: %timestamp%
+
+:: Get CPU usage
+for /f "skip=1" %%x in ('wmic cpu get loadpercentage') do (
+    if not "%%x"=="" (
+        set cpu=%%x
+        goto :gotCPU
+    )
+)
+:gotCPU
+
+:: Get RAM usage (in MB)
+for /f "skip=1 tokens=2,3 delims=," %%a in ('wmic OS get FreePhysicalMemory^,TotalVisibleMemorySize /format:csv') do (
+    set "free=%%a"
+    set "total=%%b"
+)
+set /a usedMB=(%total% - %free%) / 1024
+
+:: Write to CSV
+echo %timestamp%,%cpu%,%usedMB% >> "%logfile%"
+
+:: Wait and repeat
+timeout /t %interval% >nul
+goto loop
+\end{lstlisting}
+
+\subsection{Shell Script}
+\label{sec:shell-script}
+
+\begin{lstlisting}[caption={Shell script to run the TCL scripts}, label={lst:shell-script}]
+#!/bin/bash
+
+# Set your container names
+HAMMER_CONTAINER=HammerDB_SBD
+
+echo "Starting HammerDB benchmark runner..."
+
+##################################################################
+# Setup containers
+##################################################################
+
+# Compose down to ensure a clean start
+echo "Stopping and removing existing containers, images and volumes..."
+
+docker compose down --rmi all -v
+
+sleep 5
+
+# Compose up to start the containers
+echo "Starting containers..."
+
+docker compose up -d
+
+sleep 10
+
+echo "Containers are up and running!"
+
+echo "Starting HammerDB benchmark..."
+
+##################################################################
+# POSTGRESQL
+##################################################################
+
+echo "Starting up PostgreSQL benchmark..."
+
+# Start the stats logging in the background
+./PCStats.sh "postgres" &
+PCSTATS_PID=$!
+
+# Wait 5 seconds for stats logger to initialize
+sleep 5
+
+# Run the benchmark via Docker
+docker exec -i "$HAMMER_CONTAINER" /home/HammerDB-4.10/hammerdbcli auto scripts/tcl-scripts/largeTestPG.tcl
+
+# Kill the PCStats logger
+kill "$PCSTATS_PID"
+
+echo "Benchmark and monitoring complete for PostgreSQL."
+
+# Wait 30 seconds before exiting
+sleep 30
+
+##################################################################
+# MYSQL
+##################################################################
+
+echo "Starting up MySQL benchmark..."
+
+# Start the stats logging in the background
+./PCStats.sh "mysql" &
+PCSTATS_PID=$!
+
+# Wait 5 seconds for stats logger to initialize
+sleep 5
+
+# Run the benchmark via Docker
+docker exec -i "$HAMMER_CONTAINER" /home/HammerDB-4.10/hammerdbcli auto scripts/tcl-scripts/largeTestMySQL.tcl
+
+# Kill the PCStats logger
+kill "$PCSTATS_PID"
+
+echo "Benchmark and monitoring complete for MySQL."
+
+# Wait 30 seconds before exiting
+sleep 30
+
+##################################################################
+# MARIADB
+##################################################################
+
+echo "Starting up MariaDB benchmark..."
+
+# Start the stats logging in the background
+./PCStats.sh "mariadb" &
+PCSTATS_PID=$!
+
+# Wait 5 seconds for stats logger to initialize
+sleep 5
+
+# Run the benchmark via Docker
+docker exec -i "$HAMMER_CONTAINER" /home/HammerDB-4.10/hammerdbcli auto scripts/tcl-scripts/largeTestMariaDB.tcl
+
+# Kill the PCStats logger
+kill "$PCSTATS_PID"
+
+echo "Benchmark and monitoring complete for MariaDB."
+
+echo "Benchmark and monitoring complete."
+\end{lstlisting}
+
+\subsubsection{PCStats Script}
+\label{sec:pcstats-script-shell}
+
+\begin{lstlisting}[caption={PCStats script to monitor the system in Linux}, label={lst:pcstats-script-shell}]
+#!/bin/bash
+
+DB="$1"
+interval=10
+
+# Create log file name based on current date and time
+timestamp=$(date "+%m_%d_%H_%M")
+logfile="sys_usage_${timestamp}_${DB}.csv"
+
+# Write CSV header
+echo "Timestamp,CPU_Usage_Percent,RAM_Used_MB" > "$logfile"
+
+while true; do
+    # Get current timestamp
+    timestamp=$(date "+%Y-%m-%d_%H:%M:%S")
+    echo "Current timestamp: $timestamp"
+
+    # Get CPU usage percentage (average over 1 second)
+    cpu=$(top -bn2 | grep "Cpu(s)" | tail -n 1 | awk -F'id,' -v prefix="" '{ split($1, vs, ","); cpu=100 - vs[length(vs)]; printf "%.0f", cpu }')
+
+    # Get RAM usage in MB
+    mem_total=$(free -m | awk '/Mem:/ {print $2}')
+    mem_used=$(free -m | awk '/Mem:/ {print $3}')
+
+    # Write to CSV
+    echo "$timestamp,$cpu,$mem_used" >> "$logfile"
+
+    # Wait for interval
+    sleep "$interval"
+done
+\end{lstlisting}
