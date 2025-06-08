@@ -1,0 +1,74 @@
+Hammerdb Log @ Fri Jun 06 15:03:08 UTC 2025
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+Timestamp 1 @ Fri Jun 06 15:03:08 UTC 2025
+Vuser 1:Initializing xtprof time profiler
+Timestamp 1 @ Fri Jun 06 15:03:08 UTC 2025
+Vuser 1:Beginning rampup time of 2 minutes
+Timestamp 2 @ Fri Jun 06 15:03:08 UTC 2025
+Vuser 2:Initializing xtprof time profiler
+Timestamp 2 @ Fri Jun 06 15:03:08 UTC 2025
+Vuser 2:Processing 1000000 transactions with output suppressed...
+Timestamp 3 @ Fri Jun 06 15:03:09 UTC 2025
+Vuser 3:Initializing xtprof time profiler
+Timestamp 3 @ Fri Jun 06 15:03:09 UTC 2025
+Vuser 3:Processing 1000000 transactions with output suppressed...
+Timestamp 4 @ Fri Jun 06 15:03:09 UTC 2025
+Vuser 4:Initializing xtprof time profiler
+Timestamp 4 @ Fri Jun 06 15:03:09 UTC 2025
+Vuser 4:Processing 1000000 transactions with output suppressed...
+Timestamp 5 @ Fri Jun 06 15:03:10 UTC 2025
+Vuser 5:Initializing xtprof time profiler
+Timestamp 5 @ Fri Jun 06 15:03:10 UTC 2025
+Vuser 5:Processing 1000000 transactions with output suppressed...
+Timestamp 6 @ Fri Jun 06 15:03:10 UTC 2025
+Vuser 6:Initializing xtprof time profiler
+Timestamp 6 @ Fri Jun 06 15:03:10 UTC 2025
+Vuser 6:Processing 1000000 transactions with output suppressed...
+Timestamp 7 @ Fri Jun 06 15:03:11 UTC 2025
+Vuser 7:Initializing xtprof time profiler
+Timestamp 7 @ Fri Jun 06 15:03:11 UTC 2025
+Vuser 7:Processing 1000000 transactions with output suppressed...
+Timestamp 8 @ Fri Jun 06 15:03:11 UTC 2025
+Vuser 8:Initializing xtprof time profiler
+Timestamp 8 @ Fri Jun 06 15:03:11 UTC 2025
+Vuser 8:Processing 1000000 transactions with output suppressed...
+Timestamp 9 @ Fri Jun 06 15:03:12 UTC 2025
+Vuser 9:Initializing xtprof time profiler
+Timestamp 9 @ Fri Jun 06 15:03:12 UTC 2025
+Vuser 9:Processing 1000000 transactions with output suppressed...
+Timestamp 1 @ Fri Jun 06 15:04:08 UTC 2025
+Vuser 1:Rampup 1 minutes complete ...
+Timestamp 1 @ Fri Jun 06 15:05:08 UTC 2025
+Vuser 1:Rampup 2 minutes complete ...
+Timestamp 1 @ Fri Jun 06 15:05:08 UTC 2025
+Vuser 1:Rampup complete, Taking start Transaction Count.
+Timestamp 1 @ Fri Jun 06 15:05:08 UTC 2025
+Vuser 1:Timing test period of 8 in minutes
+Timestamp 1 @ Fri Jun 06 15:06:08 UTC 2025
+Vuser 1:1 ...,
+Timestamp 1 @ Fri Jun 06 15:07:08 UTC 2025
+Vuser 1:2 ...,
+Timestamp 1 @ Fri Jun 06 15:08:08 UTC 2025
+Vuser 1:3 ...,
+Timestamp 1 @ Fri Jun 06 15:09:08 UTC 2025
+Vuser 1:4 ...,
+Timestamp 1 @ Fri Jun 06 15:10:08 UTC 2025
+Vuser 1:5 ...,
+Timestamp 1 @ Fri Jun 06 15:11:09 UTC 2025
+Vuser 1:6 ...,
+Timestamp 1 @ Fri Jun 06 15:12:09 UTC 2025
+Vuser 1:7 ...,
+Timestamp 1 @ Fri Jun 06 15:13:09 UTC 2025
+Vuser 1:8 ...,
+Timestamp 1 @ Fri Jun 06 15:13:09 UTC 2025
+Vuser 1:Test complete, Taking end Transaction Count.
+Timestamp 1 @ Fri Jun 06 15:13:09 UTC 2025
+Vuser 1:8 Active Virtual Users configured
+Timestamp 1 @ Fri Jun 06 15:13:09 UTC 2025
+Vuser 1:TEST RESULT : System achieved 163302 NOPM from 375722 PostgreSQL TPM
+Timestamp 1 @ Fri Jun 06 15:13:09 UTC 2025
+Vuser 1:Gathering timing data from Active Virtual Users...
+Timestamp 1 @ Fri Jun 06 15:13:12 UTC 2025
+Vuser 1:Calculating timings...
+Timestamp 1 @ Fri Jun 06 15:13:12 UTC 2025
+Vuser 1:Writing timing data to /tmp/hdbxtprofile.log
