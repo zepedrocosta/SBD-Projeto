@@ -30,10 +30,6 @@
 \definecolor{clr-background}{RGB}{255,255,255}
 \definecolor{clr-text}{RGB}{0,0,0}
 \definecolor{clr-string}{RGB}{163,21,21}
-\definecolor{clr-namespace}{RGB}{0,0,0}
-\definecolor{clr-preprocessor}{RGB}{128,128,128}
-\definecolor{clr-keyword}{RGB}{0,0,255}
-\definecolor{clr-type}{RGB}{43,145,175}
 \definecolor{clr-variable}{RGB}{0,0,0}
 \definecolor{clr-constant}{RGB}{111,0,138} % macro color
 \definecolor{clr-comment}{RGB}{0,128,0}
@@ -44,7 +40,6 @@
 	  stringstyle=\color{clr-string},
 	  identifierstyle=\color{clr-variable}, 
 	  commentstyle=\color{clr-comment},
-	  keywordstyle=\color{clr-type},
 	  keywordstyle={[2]\color{clr-constant}},
     captionpos=t,
     basicstyle={\ttfamily\footnotesize},

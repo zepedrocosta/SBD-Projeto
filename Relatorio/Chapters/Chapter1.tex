@@ -16,14 +16,14 @@ Key metrics such as Transactions Per Minute (TPM) are measured under varying lev
 
 The results help identify the strengths and limitations of each database in handling transactional workloads.
 
-In this test, the databases used were PostgreSQL, MySQL and MariaDB.
+In this project, the databases used were PostgreSQL, MySQL and MariaDB.
 
 In total, we ran 54 tests:
 
 \begin{itemize}
     \setlength\itemsep{0.1em}
     \item 4 tests scaling the number of virtual users (2 4 8 12) and warehouses (VU*5) on all PCs and databases (48 tests in total);
-    \item 1 test with the number of virtual users set to the same as the number of threads in that PC, warehouses set to VU*5, allwarehouse = true on all databases on just one PC (3 test in total);
+    \item 1 test with the number of virtual users set to the same as the number of threads in that PC, warehouses set to VU*5, \emph{allwarehouse} = true on all databases on just one PC (3 test in total);
     \item 1 test with the number of virtual users set to the same as the number of threads in that PC, warehouses set to VU*5, with default config on all databases on just one PC (3 test in total).
 \end{itemize}
 
@@ -52,6 +52,20 @@ TPROC-H is a benchmark designed for data warehousing and analytical workloads, w
 
 \section{Problem \& DBMS Summary}
 \label{sec:problem}
+Modern applications progressively depend on robust, scalable database systems to effectively manage workloads in a transactional manner. Choosing the right Database Management System (DBMS) is critical to achieve the best possible performance, especially where concurrency is high and the workload is varied. With so many DBMSs to select from, with their own strengths, configurations, and community support, getting the right one can be problematic.
+
+The main objective of this study is to provide a clear comparison of how three of the most popular open-source DBMSs—PostgreSQL, MySQL, and MariaDB—perform under TPROC-C workloads. This is a close approximation of OLTP environments and thus is suitable to use in evaluating systems for high-throughput transaction processing.
+
+A brief overview of the DBMSs under test is provided below:
+
+\begin{itemize}
+    \item \textbf{PostgreSQL}: It is renowned for support of sophisticated query capabilities, extensibility, and strict support for data integrity features.
+    \item \textbf{MySQL}: Extensively used in web development, valued as being easy to use and swift, with excellent ecosystem and support.
+    \item \textbf{MariaDB}: A fork of MySQL with an emphasis on improved speed, open development, and additional storage engines.
+\end{itemize}
+
+Each DBMS was installed with identical hardware and software configurations to provide a level playing field for the tests. Experiments were designed to highlight differences in how each system handles transaction loads, concurrency, and configuration parameters. Through comparison of performance in a systematic manner across controlled tests, this study aims to guide database selection on the grounds of empirical evidence and not assumptions or anecdotal experience.
+
 
 \section{Benchmark Description}
 \label{sec:benchmark}
@@ -68,23 +82,25 @@ TPROC-H is a benchmark designed for data warehousing and analytical workloads, w
     \centering
     \begin{tabular}{|c|c|c|c|c|}
         \hline
-        \textbf{PC}      & \textbf{1}      & \textbf{2}       & \textbf{3}      & \textbf{4}    \\
+        \textbf{PC}        & \textbf{1}      & \textbf{2}       & \textbf{3}      & \textbf{4}    \\
         \hline
-        \textbf{OS}      & Windows 11      & Windows 11       & Linux (Unraid)  & MacOS Sequoia \\
+        \textbf{OS}        & Windows 11      & Windows 11       & Linux (Unraid)  & MacOS Sequoia \\
         \hline
-        \textbf{CPU}     & Intel i7-13700H & AMD Ryzen 5 3600 & Intel i3-10100F & Apple M1      \\
+        \textbf{CPU}       & Intel i7-13700H & AMD Ryzen 5 3600 & Intel i3-10100F & Apple M1      \\
         \hline
-        \textbf{Cores}   & 14 (6P 8E)      & 6                & 4               & 8             \\
+        \textbf{Cores}     & 14 (6P 8E)      & 6                & 4               & 8             \\
         \hline
-        \textbf{Threads} & 20              & 12               & 8               & 8             \\
+        \textbf{Threads}   & 20              & 12               & 8               & 8             \\
         \hline
-        \textbf{RAM}     & 16GB            & 16GB             & 32GB            & 16GB          \\
+        \textbf{RAM}       & 16GB            & 16GB             & 32GB            & 16GB          \\
         \hline
-        \textbf{Disk}    & SSD M.2 NVMe    & SSD M.2 NVMe     & SSD M.2 NVMe    & SSD M.2 NVMe  \\
+        \textbf{Disk}      & SSD M.2 NVMe    & SSD M.2 NVMe     & SSD M.2 NVMe    & SSD M.2 NVMe  \\
         \hline
-        \textbf{Read}    & 3500 MB/s       & 2500 MB/s        & 3500 MB/s       & 3400 MB/s     \\
+        \textbf{Read}      & 3500 MB/s       & 2500 MB/s        & 3500 MB/s       & 3400 MB/s     \\
         \hline
-        \textbf{Write}   & 2700 MB/s       & 2100 MB/s        & 3300 MB/s       & 2800 MB/s     \\
+        \textbf{Write}     & 2700 MB/s       & 2100 MB/s        & 3300 MB/s       & 2800 MB/s     \\
+        \hline
+        \textbf{Test type} & Docker          & Bare metal        & Docker          & Docker        \\
         \hline
     \end{tabular}
     \caption{Hardware used in the benchmarks}
@@ -95,7 +111,7 @@ In PCs \textbf{1}, \textbf{3}, and \textbf{4}, we used HammerDB and all the data
 
 We used docker compose for this setup, which allowed us to easily run the same tests on different machines with the same configuration.
 
-In PC \textbf{2}, we used everything installed on the host machine.
+In PC \textbf{2}, we used everything installed on the host machine (Bare metal).
 
 \subsection{Database Setup}
 \label{sec:database-setup}
