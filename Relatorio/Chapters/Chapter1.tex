@@ -151,13 +151,17 @@ Even though control over variables, consistency across runs, and bias to a varia
     \label{tab:hardware-setup}
 \end{table}
 
-In PC \textbf{1}, we used everything installed on the host machine (Bare metal).
+The benchmark tests were run on four different PCs that each met the same specifications for the purpose of consistent performance measurement.
 
-In PCs \textbf{2}, \textbf{3}, and \textbf{4}, we used HammerDB and all the databases in docker containers to run the tests, which allows for easy setup and isolation of the testing environment.
+\begin{itemize}
+    \item \textbf{PC 1:} All components, including HammerDB and the database systems, were installed directly on the host operating system (bare metal). This installation aimed to assess performance without the overhead associated with running in a container.
+    
+    \item \textbf{PCs 2, 3, and 4:} In this case, HammerDB and every DBMS were run within Docker containers. This offered a consistent method that provided isolation between services while ensuring consistency across machines.
+\end{itemize}
 
-We used \hyperref[sec:docker-compose]{docker compose} for this setup, which allowed us to easily run the same tests on different machines with the same configuration.
+We utilized as our orchestration tool \hyperref[sec:docker-compose]{Docker Compose}, allowing us to apply and deploy the same setup as configured on various machines with minimal processing.
 
-For \hyperref[sec:dockerfile-mysql]{MySQL} and \hyperref[sec:dockerfile-mariadb]{MariaDB}, we needed to create custom Dockerfiles to be able to use custom configuration files. This is due to the fact that these databases only accept read only configuration files when running in a container, which is not the case for PostgreSQL.
+For \hyperref[sec:dockerfile-mysql]{MySQL} and \hyperref[sec:dockerfile-mariadb]{MariaDB}, we created custom Dockerfiles to support the loading of external configuration files. This is because the databases enforced read-only access to the configuration file by default, unlike PostgreSQL, inside the container.
 
 \subsection{Database Setup}
 \label{sec:database-setup}
