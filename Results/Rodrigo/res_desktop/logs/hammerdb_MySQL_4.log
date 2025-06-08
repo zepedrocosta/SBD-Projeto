@@ -1,0 +1,70 @@
+Hammerdb Log @ Sun Jun 08 13:49:42 BST 2025
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+Timestamp 1 @ Sun Jun 08 13:49:42 BST 2025
+Vuser 1:Initializing xtprof time profiler
+Timestamp 1 @ Sun Jun 08 13:49:42 BST 2025
+Vuser 1:Ssl_cipher 
+Timestamp 1 @ Sun Jun 08 13:49:42 BST 2025
+Vuser 1:DBVersion:8.4.5
+Timestamp 1 @ Sun Jun 08 13:49:42 BST 2025
+Vuser 1:Beginning rampup time of 2 minutes
+Timestamp 2 @ Sun Jun 08 13:49:43 BST 2025
+Vuser 2:Initializing xtprof time profiler
+Timestamp 2 @ Sun Jun 08 13:49:43 BST 2025
+Vuser 2:Ssl_cipher 
+Timestamp 2 @ Sun Jun 08 13:49:43 BST 2025
+Vuser 2:Processing 1000000 transactions with output suppressed...
+Timestamp 3 @ Sun Jun 08 13:49:43 BST 2025
+Vuser 3:Initializing xtprof time profiler
+Timestamp 3 @ Sun Jun 08 13:49:43 BST 2025
+Vuser 3:Ssl_cipher 
+Timestamp 3 @ Sun Jun 08 13:49:43 BST 2025
+Vuser 3:Processing 1000000 transactions with output suppressed...
+Timestamp 4 @ Sun Jun 08 13:49:44 BST 2025
+Vuser 4:Initializing xtprof time profiler
+Timestamp 4 @ Sun Jun 08 13:49:44 BST 2025
+Vuser 4:Ssl_cipher 
+Timestamp 4 @ Sun Jun 08 13:49:44 BST 2025
+Vuser 4:Processing 1000000 transactions with output suppressed...
+Timestamp 5 @ Sun Jun 08 13:49:44 BST 2025
+Vuser 5:Initializing xtprof time profiler
+Timestamp 5 @ Sun Jun 08 13:49:44 BST 2025
+Vuser 5:Ssl_cipher 
+Timestamp 5 @ Sun Jun 08 13:49:44 BST 2025
+Vuser 5:Processing 1000000 transactions with output suppressed...
+Timestamp 1 @ Sun Jun 08 13:50:42 BST 2025
+Vuser 1:Rampup 1 minutes complete ...
+Timestamp 1 @ Sun Jun 08 13:51:42 BST 2025
+Vuser 1:Rampup 2 minutes complete ...
+Timestamp 1 @ Sun Jun 08 13:51:42 BST 2025
+Vuser 1:Rampup complete, Taking start Transaction Count.
+Timestamp 1 @ Sun Jun 08 13:51:42 BST 2025
+Vuser 1:Timing test period of 8 in minutes
+Timestamp 1 @ Sun Jun 08 13:52:43 BST 2025
+Vuser 1:1 ...,
+Timestamp 1 @ Sun Jun 08 13:53:43 BST 2025
+Vuser 1:2 ...,
+Timestamp 1 @ Sun Jun 08 13:54:43 BST 2025
+Vuser 1:3 ...,
+Timestamp 1 @ Sun Jun 08 13:55:43 BST 2025
+Vuser 1:4 ...,
+Timestamp 1 @ Sun Jun 08 13:56:43 BST 2025
+Vuser 1:5 ...,
+Timestamp 1 @ Sun Jun 08 13:57:43 BST 2025
+Vuser 1:6 ...,
+Timestamp 1 @ Sun Jun 08 13:58:43 BST 2025
+Vuser 1:7 ...,
+Timestamp 1 @ Sun Jun 08 13:59:43 BST 2025
+Vuser 1:8 ...,
+Timestamp 1 @ Sun Jun 08 13:59:43 BST 2025
+Vuser 1:Test complete, Taking end Transaction Count.
+Timestamp 1 @ Sun Jun 08 13:59:43 BST 2025
+Vuser 1:4 Active Virtual Users configured
+Timestamp 1 @ Sun Jun 08 13:59:43 BST 2025
+Vuser 1:TEST RESULT : System achieved 42475 NOPM from 98625 MySQL TPM
+Timestamp 1 @ Sun Jun 08 13:59:43 BST 2025
+Vuser 1:Gathering timing data from Active Virtual Users...
+Timestamp 1 @ Sun Jun 08 13:59:45 BST 2025
+Vuser 1:Calculating timings...
+Timestamp 1 @ Sun Jun 08 13:59:45 BST 2025
+Vuser 1:Writing timing data to C:/Users/rodri/AppData/Local/Temp/hdbxtprofile.log

@@ -1,0 +1,58 @@
+Hammerdb Log @ Sun Jun 08 14:48:54 BST 2025
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+Timestamp 1 @ Sun Jun 08 14:48:54 BST 2025
+Vuser 1:Initializing xtprof time profiler
+Timestamp 1 @ Sun Jun 08 14:48:54 BST 2025
+Vuser 1:Ssl_cipher 
+Timestamp 1 @ Sun Jun 08 14:48:54 BST 2025
+Vuser 1:DBVersion:11.4.4
+Timestamp 1 @ Sun Jun 08 14:48:54 BST 2025
+Vuser 1:Beginning rampup time of 2 minutes
+Timestamp 2 @ Sun Jun 08 14:48:55 BST 2025
+Vuser 2:Initializing xtprof time profiler
+Timestamp 2 @ Sun Jun 08 14:48:55 BST 2025
+Vuser 2:Ssl_cipher 
+Timestamp 2 @ Sun Jun 08 14:48:55 BST 2025
+Vuser 2:Processing 1000000 transactions with output suppressed...
+Timestamp 3 @ Sun Jun 08 14:48:55 BST 2025
+Vuser 3:Initializing xtprof time profiler
+Timestamp 3 @ Sun Jun 08 14:48:55 BST 2025
+Vuser 3:Ssl_cipher 
+Timestamp 3 @ Sun Jun 08 14:48:55 BST 2025
+Vuser 3:Processing 1000000 transactions with output suppressed...
+Timestamp 1 @ Sun Jun 08 14:49:55 BST 2025
+Vuser 1:Rampup 1 minutes complete ...
+Timestamp 1 @ Sun Jun 08 14:50:55 BST 2025
+Vuser 1:Rampup 2 minutes complete ...
+Timestamp 1 @ Sun Jun 08 14:50:55 BST 2025
+Vuser 1:Rampup complete, Taking start Transaction Count.
+Timestamp 1 @ Sun Jun 08 14:50:55 BST 2025
+Vuser 1:Timing test period of 8 in minutes
+Timestamp 1 @ Sun Jun 08 14:51:55 BST 2025
+Vuser 1:1 ...,
+Timestamp 1 @ Sun Jun 08 14:52:55 BST 2025
+Vuser 1:2 ...,
+Timestamp 1 @ Sun Jun 08 14:53:55 BST 2025
+Vuser 1:3 ...,
+Timestamp 1 @ Sun Jun 08 14:54:55 BST 2025
+Vuser 1:4 ...,
+Timestamp 1 @ Sun Jun 08 14:55:55 BST 2025
+Vuser 1:5 ...,
+Timestamp 1 @ Sun Jun 08 14:56:55 BST 2025
+Vuser 1:6 ...,
+Timestamp 1 @ Sun Jun 08 14:57:55 BST 2025
+Vuser 1:7 ...,
+Timestamp 1 @ Sun Jun 08 14:58:56 BST 2025
+Vuser 1:8 ...,
+Timestamp 1 @ Sun Jun 08 14:58:56 BST 2025
+Vuser 1:Test complete, Taking end Transaction Count.
+Timestamp 1 @ Sun Jun 08 14:58:56 BST 2025
+Vuser 1:2 Active Virtual Users configured
+Timestamp 1 @ Sun Jun 08 14:58:56 BST 2025
+Vuser 1:TEST RESULT : System achieved 34946 NOPM from 81033 MariaDB TPM
+Timestamp 1 @ Sun Jun 08 14:58:56 BST 2025
+Vuser 1:Gathering timing data from Active Virtual Users...
+Timestamp 1 @ Sun Jun 08 14:58:57 BST 2025
+Vuser 1:Calculating timings...
+Timestamp 1 @ Sun Jun 08 14:58:57 BST 2025
+Vuser 1:Writing timing data to C:/Users/rodri/AppData/Local/Temp/hdbxtprofile.log
