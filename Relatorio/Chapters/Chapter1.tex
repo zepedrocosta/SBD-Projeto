@@ -166,6 +166,19 @@ For \hyperref[sec:dockerfile-mysql]{MySQL} and \hyperref[sec:dockerfile-mariadb]
 \subsection{Database Setup}
 \label{sec:database-setup}
 
+In order to maintain consistency and fairness while benchmarking, MySQL, MariaDB, and PostgreSQL were all set up with their own configuration files to define the pertinent operational configurations necessary for the benchmarks. These configurations were made as consistent as possible across systems, taking into account the individual tunables and each DBMS's constraints.
+
+\begin{itemize}
+    \setlength\itemsep{0.1em}
+    \item \textbf{MySQL:} The configuration for MySQL is found in Appendix \hyperref[sec:mysql-config]{MySQL}. It has been optimized for transactional workloads including parameters such as \texttt{innodb\_buffer\_pool\_size} and \texttt{innodb\_log\_file\_size}.
+    \item \textbf{MariaDB:} The MariaDB configuration, described in Appendix \hyperref[sec:mariadb-config]{MariaDB}, was tailored to the MySQL configuration to make best use of the MariaDB tuning parameters and behaviour of the storage engines.
+    \item \textbf{PostgreSQL:} PostgreSQL was configured as described in Appendix \hyperref[sec:postgresql-config]{PostgreSQL}. Performance-related parameters discussed were standard to its use like \texttt{shared\_buffers}, \texttt{work\_mem} and \texttt{max\_connections} adjusted for the hardware limits and benchmark requirements.
+\end{itemize}
+
+Custom Dockerfiles were developed for MySQL and MariaDB which would enable these external configuration files to be mounted and run at container creation time, while eliminating the default read-only limitation on their internal configuration files. PostgreSQL facilitates configuration overrides more directly but allows you to transform the internal configuration files via volume mounting and environment variables. 
+
+All databases were initialized with a fresh schema on every test run to mitigate any residual data artifacts and maintain consistency. The process of loading a schema and provisioning a user were automated via scripts to further reduce the scope of manual activity and retain the reproducibility across testing cycles.
+
 \section{Results}
 \label{sec:results}
 
