@@ -151,22 +151,24 @@ Even though control over variables, consistency across runs, and bias to a varia
     \label{tab:hardware-setup}
 \end{table}
 
-The benchmark tests were run on four different PCs that each met the same specifications for the purpose of consistent performance measurement.
+The benchmarking tests were conducted on four various personal computers, each of which satisfied the same specification for the purpose of ongoing performance measurement.
 
 \begin{itemize}
-    \item \textbf{PC 1:} All components, including HammerDB and the database systems, were installed directly on the host operating system (bare metal). This installation aimed to assess performance without the overhead associated with running in a container.
+    \setlength\itemsep{0.1em}
+    \item \textbf{PC 1:} All the components, such as HammerDB and the database systems, were installed natively.
+    on the native operating system (bare metal). The reason for this installation was to test performance without the overhead of running in a container.
     
-    \item \textbf{PCs 2, 3, and 4:} In this case, HammerDB and every DBMS were run within Docker containers. This offered a consistent method that provided isolation between services while ensuring consistency across machines.
+    \item \textbf{PCs 2, 3, and 4:} HammerDB and each DBMS were run within Docker containers. This approach added an audio system that facilitated differentiation between services and guaranteed uniformity across devices.
 \end{itemize}
 
-We used as our orchestration tool \hyperref[sec:docker-compose]{Docker Compose}, allowing us to apply and deploy the same setup as configured in multiple machines with minimal processing.
+We utilized \hyperref[sec:docker-compose]{Docker Compose} as our orchestration tool, allowing the deployment and usage of the same setup as configured in multiple machines with minimal processing. 
 
-For \hyperref[sec:dockerfile-mysql]{MySQL} and \hyperref[sec:dockerfile-mariadb]{MariaDB}, we created custom Dockerfiles to support the loading of external configuration files. This is because the databases enforced read-only access to the configuration file by default, unlike PostgreSQL, inside the container.
+For \hyperref[sec:dockerfile-mysql]{MySQL} and \hyperref[sec:dockerfile-mariadb]{MariaDB} alone, we developed tailored Dockerfiles that would facilitate incorporating external configuration files. This is due to the fact that the databases defaulted to read-only access to the configuration file, unlike PostgreSQL, within the container.
 
 \subsection{Database Setup}
 \label{sec:database-setup}
 
-In order to maintain consistency and fairness while benchmarking, MySQL, MariaDB, and PostgreSQL were all set up with their own configuration files to define the pertinent operational configurations necessary for the benchmarks. These configurations were made as consistent as possible across systems, taking into account the individual tunables and each DBMS's constraints.
+To prevent inconsistency and promote fairness in benchmarking, MySQL, MariaDB, and PostgreSQL were all installed along with their respective configuration files to define the pertinent operating configurations needed in the benchmarks. Configurations were rendered as consistent as possible on systems, taking into consideration the individual tunables and limitations of each DBMS.
 
 \begin{itemize}
     \setlength\itemsep{0.1em}
@@ -175,9 +177,9 @@ In order to maintain consistency and fairness while benchmarking, MySQL, MariaDB
     \item \textbf{PostgreSQL:} PostgreSQL was configured as described in Appendix \hyperref[sec:postgresql-config]{PostgreSQL}. Performance-related parameters discussed were standard to its use like \texttt{shared\_buffers}, \texttt{work\_mem} and \texttt{max\_connections} adjusted for the hardware limits and benchmark requirements.
 \end{itemize}
 
-Custom Dockerfiles were developed for MySQL and MariaDB which would enable these external configuration files to be mounted and run at container creation time, while eliminating the default read-only limitation on their internal configuration files. PostgreSQL facilitates configuration overrides more directly but allows you to transform the internal configuration files via volume mounting and environment variables. 
+Custom Dockerfiles were created for MySQL and MariaDB in order to mount and execute the external configuration files at the time of container initialization, thereby overriding the default read-only restriction on their internal configuration files. PostgreSQL offers a simpler method of configuration alteration but permits its internal configuration files to be altered using volume mounting and environment variables. 
 
-All databases were initialized with a fresh schema on every test run to mitigate any residual data artifacts and maintain consistency. The process of loading a schema and provisioning a user were automated via scripts to further reduce the scope of manual activity and retain the reproducibility across testing cycles.
+Each database instance was restarted with a new schema for each test iteration to eliminate residual data artifacts and ensure consistency. Loading a schema and provisioning a user were also scripted to minimize the level of manual intervention and preserve reproducibility between testing cycles.
 
 \section{Results}
 \label{sec:results}
