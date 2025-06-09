@@ -24,11 +24,10 @@ for filename in filenames:
     csv_files = [
         rf'Results\Rodrigo\res_desktop\csv\{filename}',  # 1
         rf'Results\Silva\csv\{filename}',                # 2
-        # rf'Results\Ze\csv\{filename}',                 # 3
+        rf'Results\Ze\csv\{filename}',                 # 3
         rf'Results\Rodrigo\res_macos\csv\{filename}'     # 4
     ]
-    # labels = ['PC 1', 'PC 2', 'PC 3', 'PC 4']
-    labels = ['PC 1', 'PC 2', 'PC 4']
+    labels = ['PC 1', 'PC 2', 'PC 3', 'PC 4']
 
     plt.figure(figsize=(14, 7))
 
