@@ -14,18 +14,21 @@
 
 % Required packages
 \RequirePackage{graphicx}
+\RequirePackage{subcaption}
 \RequirePackage{geometry}
 \RequirePackage{helvet}
 \RequirePackage{hyperref}
+\RequirePackage{float}
 \RequirePackage{tocloft} % For customizing the table of contents
 % \RequirePackage[portuguese]{babel} % Set language to Portuguese
 \RequirePackage[utf8]{inputenc} % For UTF-8 encoding
 \RequirePackage{lipsum} % For dummy text
-\RequirePackage[backend=biber]{biblatex}
+\RequirePackage[backend=biber, style=trad-abbrv, sorting=none]{biblatex}
 \RequirePackage{csquotes}
 \RequirePackage{setspace}
 \RequirePackage{xcolor}
 \RequirePackage{listings}
+\RequirePackage{tabularx}
 
 \definecolor{clr-background}{RGB}{255,255,255}
 \definecolor{clr-text}{RGB}{0,0,0}
@@ -100,12 +103,12 @@
 \graphicspath{{Images/}}
 
 % Color for hyperlinks
-\definecolor{darkblue}{rgb}{0.0,0.08,0.45}%
+\definecolor{darkblue}{rgb}{0.0,0.08,0.45}
 \hypersetup{
     colorlinks=true,
-    linkcolor=darkblue,    % Color for internal links (e.g., TOC, \ref)
-    citecolor=darkblue,    % Color for citation links
-    urlcolor=darkblue      % Color for URL links
+    linkcolor=darkblue,    % TOC and internal links
+    citecolor=darkblue,
+    urlcolor=darkblue
 }
 \PassOptionsToPackage{allcolors=darkblue}{hyperref}
 
@@ -141,7 +144,10 @@
         {\scshape\large \dateofsubmission \par}
 
         \doublespacing
-        \tableofcontents
+        \begingroup
+          \hypersetup{linkcolor=black}
+          \tableofcontents
+        \endgroup
         \singlespacing
 
         \newpage
@@ -149,7 +155,7 @@
 }
 
 % Custom table of contents
-\renewcommand{\cfttoctitlefont}{\huge\bfseries}
+% \renewcommand{\cfttoctitlefont}{\huge\bfseries}
 \renewcommand{\cftsecfont}{\large\bfseries}
 \renewcommand{\cftsubsecfont}{\normalsize\bfseries}
 
