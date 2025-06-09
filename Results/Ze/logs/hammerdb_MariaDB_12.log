@@ -1,0 +1,116 @@
+Hammerdb Log @ Sun Jun 08 16:05:03 UTC 2025
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+Timestamp 1 @ Sun Jun 08 16:05:03 UTC 2025
+Vuser 1:Initializing xtprof time profiler
+Timestamp 1 @ Sun Jun 08 16:05:03 UTC 2025
+Vuser 1:Ssl_cipher 
+Timestamp 1 @ Sun Jun 08 16:05:04 UTC 2025
+Vuser 1:Beginning rampup time of 2 minutes
+Timestamp 2 @ Sun Jun 08 16:05:04 UTC 2025
+Vuser 2:Initializing xtprof time profiler
+Timestamp 2 @ Sun Jun 08 16:05:04 UTC 2025
+Vuser 2:Ssl_cipher 
+Timestamp 2 @ Sun Jun 08 16:05:04 UTC 2025
+Vuser 2:Processing 1000000 transactions with output suppressed...
+Timestamp 3 @ Sun Jun 08 16:05:04 UTC 2025
+Vuser 3:Initializing xtprof time profiler
+Timestamp 3 @ Sun Jun 08 16:05:04 UTC 2025
+Vuser 3:Ssl_cipher 
+Timestamp 3 @ Sun Jun 08 16:05:05 UTC 2025
+Vuser 3:Processing 1000000 transactions with output suppressed...
+Timestamp 4 @ Sun Jun 08 16:05:05 UTC 2025
+Vuser 4:Initializing xtprof time profiler
+Timestamp 4 @ Sun Jun 08 16:05:05 UTC 2025
+Vuser 4:Ssl_cipher 
+Timestamp 4 @ Sun Jun 08 16:05:05 UTC 2025
+Vuser 4:Processing 1000000 transactions with output suppressed...
+Timestamp 5 @ Sun Jun 08 16:05:05 UTC 2025
+Vuser 5:Initializing xtprof time profiler
+Timestamp 5 @ Sun Jun 08 16:05:05 UTC 2025
+Vuser 5:Ssl_cipher 
+Timestamp 5 @ Sun Jun 08 16:05:05 UTC 2025
+Vuser 5:Processing 1000000 transactions with output suppressed...
+Timestamp 6 @ Sun Jun 08 16:05:06 UTC 2025
+Vuser 6:Initializing xtprof time profiler
+Timestamp 6 @ Sun Jun 08 16:05:06 UTC 2025
+Vuser 6:Ssl_cipher 
+Timestamp 6 @ Sun Jun 08 16:05:06 UTC 2025
+Vuser 6:Processing 1000000 transactions with output suppressed...
+Timestamp 7 @ Sun Jun 08 16:05:06 UTC 2025
+Vuser 7:Initializing xtprof time profiler
+Timestamp 7 @ Sun Jun 08 16:05:06 UTC 2025
+Vuser 7:Ssl_cipher 
+Timestamp 7 @ Sun Jun 08 16:05:06 UTC 2025
+Vuser 7:Processing 1000000 transactions with output suppressed...
+Timestamp 8 @ Sun Jun 08 16:05:07 UTC 2025
+Vuser 8:Initializing xtprof time profiler
+Timestamp 8 @ Sun Jun 08 16:05:07 UTC 2025
+Vuser 8:Ssl_cipher 
+Timestamp 8 @ Sun Jun 08 16:05:07 UTC 2025
+Vuser 8:Processing 1000000 transactions with output suppressed...
+Timestamp 9 @ Sun Jun 08 16:05:07 UTC 2025
+Vuser 9:Initializing xtprof time profiler
+Timestamp 9 @ Sun Jun 08 16:05:07 UTC 2025
+Vuser 9:Ssl_cipher 
+Timestamp 9 @ Sun Jun 08 16:05:08 UTC 2025
+Vuser 9:Processing 1000000 transactions with output suppressed...
+Timestamp 10 @ Sun Jun 08 16:05:08 UTC 2025
+Vuser 10:Initializing xtprof time profiler
+Timestamp 10 @ Sun Jun 08 16:05:08 UTC 2025
+Vuser 10:Ssl_cipher 
+Timestamp 10 @ Sun Jun 08 16:05:08 UTC 2025
+Vuser 10:Processing 1000000 transactions with output suppressed...
+Timestamp 11 @ Sun Jun 08 16:05:08 UTC 2025
+Vuser 11:Initializing xtprof time profiler
+Timestamp 11 @ Sun Jun 08 16:05:09 UTC 2025
+Vuser 11:Ssl_cipher 
+Timestamp 11 @ Sun Jun 08 16:05:09 UTC 2025
+Vuser 11:Processing 1000000 transactions with output suppressed...
+Timestamp 12 @ Sun Jun 08 16:05:09 UTC 2025
+Vuser 12:Initializing xtprof time profiler
+Timestamp 12 @ Sun Jun 08 16:05:09 UTC 2025
+Vuser 12:Ssl_cipher 
+Timestamp 12 @ Sun Jun 08 16:05:09 UTC 2025
+Vuser 12:Processing 1000000 transactions with output suppressed...
+Timestamp 13 @ Sun Jun 08 16:05:09 UTC 2025
+Vuser 13:Initializing xtprof time profiler
+Timestamp 13 @ Sun Jun 08 16:05:09 UTC 2025
+Vuser 13:Ssl_cipher 
+Timestamp 13 @ Sun Jun 08 16:05:10 UTC 2025
+Vuser 13:Processing 1000000 transactions with output suppressed...
+Timestamp 1 @ Sun Jun 08 16:06:04 UTC 2025
+Vuser 1:Rampup 1 minutes complete ...
+Timestamp 1 @ Sun Jun 08 16:07:04 UTC 2025
+Vuser 1:Rampup 2 minutes complete ...
+Timestamp 1 @ Sun Jun 08 16:07:04 UTC 2025
+Vuser 1:Rampup complete, Taking start Transaction Count.
+Timestamp 1 @ Sun Jun 08 16:07:04 UTC 2025
+Vuser 1:Timing test period of 8 in minutes
+Timestamp 1 @ Sun Jun 08 16:08:04 UTC 2025
+Vuser 1:1 ...,
+Timestamp 1 @ Sun Jun 08 16:09:04 UTC 2025
+Vuser 1:2 ...,
+Timestamp 1 @ Sun Jun 08 16:10:04 UTC 2025
+Vuser 1:3 ...,
+Timestamp 1 @ Sun Jun 08 16:11:05 UTC 2025
+Vuser 1:4 ...,
+Timestamp 1 @ Sun Jun 08 16:12:05 UTC 2025
+Vuser 1:5 ...,
+Timestamp 1 @ Sun Jun 08 16:13:05 UTC 2025
+Vuser 1:6 ...,
+Timestamp 1 @ Sun Jun 08 16:14:05 UTC 2025
+Vuser 1:7 ...,
+Timestamp 1 @ Sun Jun 08 16:15:05 UTC 2025
+Vuser 1:8 ...,
+Timestamp 1 @ Sun Jun 08 16:15:05 UTC 2025
+Vuser 1:Test complete, Taking end Transaction Count.
+Timestamp 1 @ Sun Jun 08 16:15:06 UTC 2025
+Vuser 1:12 Active Virtual Users configured
+Timestamp 1 @ Sun Jun 08 16:15:06 UTC 2025
+Vuser 1:TEST RESULT : System achieved 33340 NOPM from 77330 MariaDB TPM
+Timestamp 1 @ Sun Jun 08 16:15:06 UTC 2025
+Vuser 1:Gathering timing data from Active Virtual Users...
+Timestamp 1 @ Sun Jun 08 16:15:10 UTC 2025
+Vuser 1:Calculating timings...
+Timestamp 1 @ Sun Jun 08 16:15:10 UTC 2025
+Vuser 1:Writing timing data to /tmp/hdbxtprofile.log

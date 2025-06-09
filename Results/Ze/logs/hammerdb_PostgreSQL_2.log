@@ -1,0 +1,50 @@
+Hammerdb Log @ Sun Jun 08 13:50:34 UTC 2025
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+Timestamp 1 @ Sun Jun 08 13:50:34 UTC 2025
+Vuser 1:Initializing xtprof time profiler
+Timestamp 1 @ Sun Jun 08 13:50:34 UTC 2025
+Vuser 1:Beginning rampup time of 2 minutes
+Timestamp 2 @ Sun Jun 08 13:50:35 UTC 2025
+Vuser 2:Initializing xtprof time profiler
+Timestamp 2 @ Sun Jun 08 13:50:35 UTC 2025
+Vuser 2:Processing 1000000 transactions with output suppressed...
+Timestamp 3 @ Sun Jun 08 13:50:35 UTC 2025
+Vuser 3:Initializing xtprof time profiler
+Timestamp 3 @ Sun Jun 08 13:50:36 UTC 2025
+Vuser 3:Processing 1000000 transactions with output suppressed...
+Timestamp 1 @ Sun Jun 08 13:51:35 UTC 2025
+Vuser 1:Rampup 1 minutes complete ...
+Timestamp 1 @ Sun Jun 08 13:52:35 UTC 2025
+Vuser 1:Rampup 2 minutes complete ...
+Timestamp 1 @ Sun Jun 08 13:52:35 UTC 2025
+Vuser 1:Rampup complete, Taking start Transaction Count.
+Timestamp 1 @ Sun Jun 08 13:52:35 UTC 2025
+Vuser 1:Timing test period of 8 in minutes
+Timestamp 1 @ Sun Jun 08 13:53:35 UTC 2025
+Vuser 1:1 ...,
+Timestamp 1 @ Sun Jun 08 13:54:35 UTC 2025
+Vuser 1:2 ...,
+Timestamp 1 @ Sun Jun 08 13:55:35 UTC 2025
+Vuser 1:3 ...,
+Timestamp 1 @ Sun Jun 08 13:56:35 UTC 2025
+Vuser 1:4 ...,
+Timestamp 1 @ Sun Jun 08 13:57:35 UTC 2025
+Vuser 1:5 ...,
+Timestamp 1 @ Sun Jun 08 13:58:35 UTC 2025
+Vuser 1:6 ...,
+Timestamp 1 @ Sun Jun 08 13:59:36 UTC 2025
+Vuser 1:7 ...,
+Timestamp 1 @ Sun Jun 08 14:00:36 UTC 2025
+Vuser 1:8 ...,
+Timestamp 1 @ Sun Jun 08 14:00:36 UTC 2025
+Vuser 1:Test complete, Taking end Transaction Count.
+Timestamp 1 @ Sun Jun 08 14:00:36 UTC 2025
+Vuser 1:2 Active Virtual Users configured
+Timestamp 1 @ Sun Jun 08 14:00:36 UTC 2025
+Vuser 1:TEST RESULT : System achieved 90879 NOPM from 209344 PostgreSQL TPM
+Timestamp 1 @ Sun Jun 08 14:00:36 UTC 2025
+Vuser 1:Gathering timing data from Active Virtual Users...
+Timestamp 1 @ Sun Jun 08 14:00:36 UTC 2025
+Vuser 1:Calculating timings...
+Timestamp 1 @ Sun Jun 08 14:00:36 UTC 2025
+Vuser 1:Writing timing data to /tmp/hdbxtprofile.log
