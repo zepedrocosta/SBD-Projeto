@@ -52,7 +52,7 @@ for filename in filenames:
 paths = [
     r'Results\Rodrigo\res_desktop\csv\hammerdb_summary.csv',
     r'Results\Silva\csv\hammerdb_summary.csv',
-    # r'Results\Ze\csv\hammerdb_summary.csv',
+    r'Results\Ze\csv\hammerdb_summary.csv',
     r'Results\Rodrigo\res_macos\csv\hammerdb_summary.csv'
 ]
 
