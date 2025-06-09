@@ -41,6 +41,13 @@ for filename in filenames:
 
     plt.xlabel("Time (minutes)")
     plt.ylabel("TPM")
+    # Set Y limit based on filename
+    if "MySQL" in filename:
+        plt.ylim(0, 350000)
+    elif "MariaDB" in filename:
+        plt.ylim(0, 350000)
+    else:
+        plt.ylim(0, 700000)
     plt.legend()
     plt.grid(True)
     plt.xticks(ticks=[i for i in range(11)])
@@ -67,9 +74,9 @@ for csv_path in paths:
     pivot_df = data.pivot(index="VU", columns="Database", values="NOPM")
 
     # Plot grouped bar chart
-    pivot_df.plot(kind="bar", figsize=(10, 6))
+    ax = pivot_df.plot(kind="bar", figsize=(10, 6))
+    ax.set_ylim(0, 175000)
 
-    plt.title("NOPM Comparison Across Databases by VU")
     plt.xlabel("Virtual Users (VU)")
     plt.ylabel("New Orders Per Minute (NOPM)")
     plt.legend(title="Database", loc="upper left")
