@@ -159,7 +159,7 @@ The benchmark tests were run on four different PCs that each met the same specif
     \item \textbf{PCs 2, 3, and 4:} In this case, HammerDB and every DBMS were run within Docker containers. This offered a consistent method that provided isolation between services while ensuring consistency across machines.
 \end{itemize}
 
-We utilized as our orchestration tool \hyperref[sec:docker-compose]{Docker Compose}, allowing us to apply and deploy the same setup as configured on various machines with minimal processing.
+We used as our orchestration tool \hyperref[sec:docker-compose]{Docker Compose}, allowing us to apply and deploy the same setup as configured in multiple machines with minimal processing.
 
 For \hyperref[sec:dockerfile-mysql]{MySQL} and \hyperref[sec:dockerfile-mariadb]{MariaDB}, we created custom Dockerfiles to support the loading of external configuration files. This is because the databases enforced read-only access to the configuration file by default, unlike PostgreSQL, inside the container.
 
