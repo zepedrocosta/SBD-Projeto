@@ -1,3 +1,7 @@
 # Performance comparison between DBMSs under TPROC-C workloads
 
 This project aims to benchmark and compare the performance of different database systems using the TPC-C workload, a standard for evaluating OLTP (Online Transaction Processing) environments. Automated scripts are used to run identical tests across multiple databases, each configured with similar settings to ensure a fair comparison. Key metrics such as Transactions Per Minute (TPM) are measured under varying levels of concurrent users. The results help identify the strengths and limitations of each database in handling transactional workloads.
+
+---
+
+Grade - 16/20
